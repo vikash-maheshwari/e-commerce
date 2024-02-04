@@ -34,7 +34,7 @@ const dispatch = useDispatch();
   async function addfav(product) {
     try {
       // Assuming you have a backend API endpoint to handle adding favorites
-      const result = await fetch(`http://localhost:5000/favourites`, {
+      const result = await fetch(`https://json-server-u1lr.onrender.com/favourites`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ const dispatch = useDispatch();
       }
 
 
-      const response = await fetch(`http://localhost:5000/favourites`, {
+      const response = await fetch(`https://json-server-u1lr.onrender.com/favourites`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

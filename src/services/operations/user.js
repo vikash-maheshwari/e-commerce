@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 
 export const login = (email, password,navigate) => async (dispatch) => {
   try {
-    const response = await fetch('http://localhost:5000/users', {
+    const response = await fetch('https://json-server-u1lr.onrender.com/users', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ export const login = (email, password,navigate) => async (dispatch) => {
 
 export const singup = async (email,password,navigate) =>{
   try{
-    const response = await fetch('http://localhost:5000/users', {
+    const response = await fetch('https://json-server-u1lr.onrender.com/users', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

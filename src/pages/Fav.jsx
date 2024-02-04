@@ -16,7 +16,7 @@ function Fav() {
     // Fetch favorite products
     async function fetchFavoritesData() {
       try {
-        const response = await fetch('http://localhost:5000/favourites', {
+        const response = await fetch('https://json-server-u1lr.onrender.com/favourites', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

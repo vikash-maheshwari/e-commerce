@@ -17,7 +17,7 @@ const [fav,setFav] =useState(false)
     console.log(id)
     async function fetchProductData() {
       try {
-        const response = await fetch(`http://localhost:5000/products?id=${id}`, {
+        const response = await fetch(`https://json-server-u1lr.onrender.com/products?id=${id}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ const [fav,setFav] =useState(false)
   async function addfav(product) {
     try {
       // Assuming you have a backend API endpoint to handle adding favorites
-      const result = await fetch(`http://localhost:5000/favourites`, {
+      const result = await fetch(`https://json-server-u1lr.onrender.com/favourites`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -66,7 +66,7 @@ const [fav,setFav] =useState(false)
       }
 
 
-      const response = await fetch(`http://localhost:5000/favourites`, {
+      const response = await fetch(`https://json-server-u1lr.onrender.com/favourites`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
