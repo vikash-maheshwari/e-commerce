@@ -13,8 +13,7 @@ function SingleProducts() {
   const [fav, setFav] = useState(false);
 
   useEffect(() => {
-    // Fetch product by ID using a GET request
-    console.log(id);
+    
     async function fetchProductData() {
       try {
         const response = await fetch(
@@ -38,14 +37,12 @@ function SingleProducts() {
       }
     }
 
-    // Call the fetchProductData function
     fetchProductData();
-    console.log(product);
+    // console.log(product);
   }, [id]);
 
   async function addfav(product) {
     try {
-      // Assuming you have a backend API endpoint to handle adding favorites
       const result = await fetch(
         `https://json-server-u1lr.onrender.com/favourites`,
         {
@@ -60,7 +57,7 @@ function SingleProducts() {
         const products = await result.json();
         const favYes = products.find((pro) => pro.id === product.id);
         if (favYes) {
-          toast.error("products  already in favorite");
+          toast.error("Product  Already Add in Favorite");
           console.log("already added");
           return;
         }
@@ -73,16 +70,14 @@ function SingleProducts() {
           headers: {
             "Content-Type": "application/json",
           },
-          // Pass the product data in the request body
           body: JSON.stringify(product),
         }
       );
 
       if (response.ok) {
-        // Handle successful addition to favorites
-        toast.success("favorite ADded Successful");
+        toast.success("Favorite Added Successful");
 
-        console.log("Product added to favorites successfully");
+        // console.log("Product added to favorites successfully");
       } else {
         // Handle unsuccessful response
         console.error(
@@ -149,7 +144,7 @@ function SingleProducts() {
           <Link
             to="/cart"
             className="bg-blue-800 p-2 px-8 font-bold text-white rounded-xl hover:scale-110 hover:bg-red-500 "
-            onClick={() => dispatch(addToCart(product))}
+            onClick={() => dispatch(addToCart(product[0]))}
           >
             Buy Now
           </Link>

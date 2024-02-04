@@ -15,11 +15,6 @@ function Cart() {
   const dispatch = useDispatch()
   
 
-  useEffect(()=>{
-    console.log(Number(total))
-    console.log(cart)
-
-  },[removeFromCart])
 
 
   function add(product,quantity){
@@ -53,7 +48,7 @@ function Cart() {
         const result = await response.json();
         // Handle the result, e.g., display a success message
         dispatch(resetCart())
-        toast.success("Order Successfully")
+        toast.success("Order Successfull")
 
         Swal.fire({
           title: `Order Successfull 

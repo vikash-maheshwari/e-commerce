@@ -37,7 +37,7 @@ function Singup() {
                
                <input 
                
-               type="password" id='email' 
+               type="password" id='pass' 
                value={password}
                required
 

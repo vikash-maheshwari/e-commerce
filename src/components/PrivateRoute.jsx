@@ -5,9 +5,6 @@ import { Navigate } from "react-router-dom"
 
 function PrivateRoute({ children }) {
   const { token } = useSelector((state) => state.profile);
-useEffect(()=>{
-  console.log(token)
-},[])
 
 if (token !== null) {
   return children

@@ -25,22 +25,17 @@ const cartSlice = createSlice({
       const index = state.cart.findIndex((item) => item.product.id === product.id)
 
       if (index >= 0) {
-        // If the product is already in the cart, do not modify the quantity
         toast.error("Product already in cart")
         return
       }
-      // If the product is not in the cart, add it to the cart
       state.cart.push({product,quantity: 1})
-      // Update the total quantity and price
       state.totalItems++
-      // state.totalCount += 1;
       state.total += Number(product.amount)
-      // Update to localstorage
       localStorage.setItem("cart", JSON.stringify(state.cart))
       localStorage.setItem("total", JSON.stringify(state.total))
       localStorage.setItem("totalItems", JSON.stringify(state.totalItems))
       // show toast
-      toast.success("product added to cart")
+      toast.success("Product added to cart")
     },
     
     removeFromCart: (state, action) => {

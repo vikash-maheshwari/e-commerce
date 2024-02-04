@@ -15,7 +15,7 @@ export const getAllProducts = async () => {
       }
   
       const products = await response.json();
-      console.log('Products:', products);
+      // console.log('Products:', products);
       return products;
     } catch (error) {
       console.error('Error getting products:', error);
