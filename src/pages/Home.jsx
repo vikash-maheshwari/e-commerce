@@ -48,7 +48,7 @@ const dispatch = useDispatch();
           (pro) => pro.id === product.id 
         );
       if(favYes){
-        toast.error("products All alredy in favrat")
+        toast.error("products All alredy in favorite")
         console.log("alredy added")
         return 
 
@@ -67,7 +67,7 @@ const dispatch = useDispatch();
   
       if (response.ok) {
         // Handle successful addition to favorites
-      toast.success("Favrate ADded Successful")
+      toast.success("favorite ADded Successful")
 
         console.log('Product added to favorites successfully');
       } else {
