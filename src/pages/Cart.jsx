@@ -53,7 +53,7 @@ function Cart() {
         const result = await response.json();
         // Handle the result, e.g., display a success message
         dispatch(resetCart())
-        toast.success("Order Succesfully")
+        toast.success("Order Successfully")
 
         Swal.fire({
           title: `Order Successfull 

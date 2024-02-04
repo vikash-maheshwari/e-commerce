@@ -1,10 +1,6 @@
 {
   "users": [
-    {
-      "id": "1",
-      "email": "vikash@vk",
-      "password": "yourpassword"
-    }
+   
   ],
   "products": [
     {
