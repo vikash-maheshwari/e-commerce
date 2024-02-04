@@ -58,8 +58,8 @@ const [fav,setFav] =useState(false)
           (pro) => pro.id === product.id 
         );
       if(favYes){
-        toast.error("products All alredy in favorite")
-        console.log("alredy added")
+        toast.error("products All already in favorite")
+        console.log("already added")
         return 
 
       }
