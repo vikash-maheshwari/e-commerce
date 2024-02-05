@@ -11,10 +11,13 @@ function Fav() {
 
     const [favorites, setFavorites] = useState([]);
     const dispatch = useDispatch()
+  const [loading, setLoading] = useState(false);
+
 
   useEffect(() => {
     // Fetch favorite products
     async function fetchFavoritesData() {
+      setLoading(true)
       try {
         const response = await fetch('https://json-server-u1lr.onrender.com/favourites', {
           method: 'GET',
@@ -33,6 +36,8 @@ function Fav() {
       } catch (error) {
         console.error('Error during fetch:', error);
       }
+      setLoading(false)
+
     }
 
     // Call the fetchFavoritesData function
@@ -47,8 +52,13 @@ function Fav() {
             <h2>All Favorites</h2>
           </div>
 
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-4'>
-  {favorites.map((product) => (
+     {
+      loading ? ( <div className="grid min-h-[calc(100vh-6.5rem)] place-items-center">
+            <div className="spinner"></div>
+          </div>) : (   
+            favorites.length > 0 ? (    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-4'>
+  {
+    favorites.map((product) => (
 
   <div key={product.id} className='bg-white shadow-md rounded-md overflow-hidden'>
   <Link to={`/singleProducts/${product.id}`}>
@@ -81,9 +91,11 @@ function Fav() {
           </div>
     </div>
  
-  ))}
-</div>
-
+  ))
+  }
+</div>) : (<div className=' text-3xl  flex justify-center items-center mt-14 font-bold'> No Favorites Items</div>) 
+)
+     }
 
     </div>
       

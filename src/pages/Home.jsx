@@ -14,10 +14,13 @@ import { Link } from "react-router-dom";
 function Home() {
   const [products, setProducts] = useState([]);
   const [fav, setFav] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchProducts = async () => {
+      setLoading(true);
       try {
         const result = await getAllProducts();
         setProducts(result);
@@ -25,6 +28,7 @@ function Home() {
       } catch (error) {
         console.log("Error during fetching products", error);
       }
+      setLoading(false);
     };
 
     fetchProducts();
@@ -85,58 +89,64 @@ function Home() {
           <h2>All Products</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-4">
-          {products.map((product) => (
-            <div
-              key={product.id}
-              className="bg-white shadow-md rounded-md overflow-hidden"
-            >
-              <Link to={`/singleProducts/${product.id}`}>
-                <img
-                  src={product.image}
-                  alt={product.title}
-                  className="w-full h-48 object-cover"
-                />
-                <div className="p-4">
-                  <h3 className="text-sm font-semibold mb-2">
-                    {product.title}
-                  </h3>
-                  <div className="flex justify-between items-center">
-                    <div>
-                      <p className=" font-bold flex items-center ">
-                        <MdCurrencyRupee />
-                        {product.amount}
-                      </p>
-
-                      <div className="flex items-center text-sm">
-                        <p className="text-white font-bold flex items-center gap-1 px-2 bg-green-500">
-                          <FaRegStar />
-                          {product.rating}
+        {loading ? (
+          <div className="grid min-h-[calc(100vh-6.5rem)] place-items-center">
+            <div className="spinner"></div>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-4">
+            {products.map((product) => (
+              <div
+                key={product.id}
+                className="bg-white shadow-md rounded-md overflow-hidden"
+              >
+                <Link to={`/singleProducts/${product.id}`}>
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="p-4">
+                    <h3 className="text-sm font-semibold mb-2">
+                      {product.title}
+                    </h3>
+                    <div className="flex justify-between items-center">
+                      <div>
+                        <p className=" font-bold flex items-center ">
+                          <MdCurrencyRupee />
+                          {product.amount}
                         </p>
+
+                        <div className="flex items-center text-sm">
+                          <p className="text-white font-bold flex items-center gap-1 px-2 bg-green-500">
+                            <FaRegStar />
+                            {product.rating}
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
+                </Link>
+                <div className="mt-2 flex justify-between">
+                  <button
+                    onClick={() => addfav(product)}
+                    className={`text-gray-600 text-2xl px-4 py-2 rounded-md hover:scale-110 ${
+                      fav ? "text-red-600" : "text-gray-600"
+                    }`}
+                  >
+                    <FaHeart />
+                  </button>
+                  <button
+                    onClick={() => dispatch(addToCart(product))}
+                    className="text-gray-600 text-2xl   px-4 py-2 rounded-md hover:scale-110"
+                  >
+                    <MdOutlineShoppingCartCheckout />
+                  </button>
                 </div>
-              </Link>
-              <div className="mt-2 flex justify-between">
-                <button
-                  onClick={() => addfav(product)}
-                  className={`text-gray-600 text-2xl px-4 py-2 rounded-md hover:scale-110 ${
-                    fav ? "text-red-600" : "text-gray-600"
-                  }`}
-                >
-                  <FaHeart />
-                </button>
-                <button
-                  onClick={() => dispatch(addToCart(product))}
-                  className="text-gray-600 text-2xl   px-4 py-2 rounded-md hover:scale-110"
-                >
-                  <MdOutlineShoppingCartCheckout />
-                </button>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
