@@ -123,3 +123,135 @@ code {
     transform: scaleY(-1) rotate(-135deg);
   }
 }
+
+
+
+
+
+
+
+.container {
+  max-width: 140rem;
+  padding: 1rem 2.4rem;
+  margin: 0 auto;
+}
+
+.grid1{
+  margin: 18px 0;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center;
+  
+}
+
+.registration-form{
+  background-color: #250241;
+  height: auto;
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 15px;
+}
+
+
+.first-div{
+  display: flex;
+  flex-direction: column;
+  margin-top: -25px;
+  gap: 64px;
+  width: 100%;
+  position: relative;
+}
+.custom-shape-divider-bottom-1706878303 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1706878303 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 87px;
+}
+
+.custom-shape-divider-bottom-1706878303 .shape-fill {
+  fill: #D0BEBE66;
+}
+.btn{
+  background-color: cadetblue;
+  padding: 15px 30px;
+  font-size: 25px;
+  width: 158px;
+  display: flex;
+  margin: auto;
+}
+.icon{
+  display: flex;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 2px solid white;
+  overflow: hidden;
+  margin-bottom: -13px;
+
+  & i{
+    margin-top: 22px;
+    font-size: 50px;
+  }
+} 
+input{
+  width: 280px;
+  height: 38px;
+  padding-left: 30px;
+  border: none;
+  border-radius: 6px;
+}
+input:focus {
+  outline: none; 
+  border-color: transparent; 
+}
+
+.icons-div{
+  position: relative;
+  display: inline-block;
+  margin-top: 21px;
+  
+}
+.icons {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 3px;
+    color: #888;
+    font-size: 20px;
+    right: 253px;
+  border-right: 2px solid #888;
+}
+
+.submit-btn{
+  display: flex;
+  margin: auto;
+  font-size: 20px;
+  padding: 10px 80px;
+  background-color: cadetblue;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.between-text p{
+  display: flex;
+  color: cadetblue;
+  font-size: 12px;
+  margin-top: 3px;
+}
