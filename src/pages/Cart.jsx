@@ -145,10 +145,17 @@ function Cart() {
               <div className="flex justify-between my-6 font-semibold">
                 Total : <p>{total > 0 ? <>{total - 50}</> : <>0</>}</p>
               </div>
-              <div className="text-end">
+              <div className="flex justify-around">
+              <button
+                  onClick={()=> dispatch(resetCart())}
+                  className=" bg-yellow-400 p-1 px-4 rounded-2xl font-bold "
+                >
+                  Reset Cart
+                </button>  
+
                 <button
                   onClick={order}
-                  className=" bg-yellow-400 p-2 px-8 rounded-2xl font-bold "
+                  className=" bg-yellow-400 p-1 px-4 rounded-2xl font-bold "
                 >
                   Order Now
                 </button>

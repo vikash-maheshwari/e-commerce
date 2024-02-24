@@ -5,16 +5,16 @@ import { FaRegStar } from "react-icons/fa6";
 import { MdOutlineShoppingCartCheckout } from "react-icons/md";
 import { FaHeart } from "react-icons/fa";
 import toast from "react-hot-toast";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../redux/slices/cartSlice";
 
-import { MdRemoveShoppingCart } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 function Home() {
   const [products, setProducts] = useState([]);
   const [fav, setFav] = useState(false);
   const [loading, setLoading] = useState(false);
+  const {cart} = useSelector((state) => state.cart);
 
   const dispatch = useDispatch();
 
@@ -46,6 +46,7 @@ function Home() {
         }
       );
 
+      // check products already exits or not in fav. list
       if (result.ok) {
         const products = await result.json();
         const favYes = products.find((pro) => pro.id === product.id);
@@ -56,6 +57,7 @@ function Home() {
         }
       }
 
+      //if not exits to add in fav. list
       const response = await fetch(
         `https://json-server-u1lr.onrender.com/favourites`,
         {
@@ -81,6 +83,11 @@ function Home() {
       console.error("Error during adding to favorites:", error);
     }
   }
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+  };
+
 
   return (
     <div className="w-full min-h-screen ">
@@ -136,12 +143,26 @@ function Home() {
                   >
                     <FaHeart />
                   </button>
-                  <button
-                    onClick={() => dispatch(addToCart(product))}
-                    className="text-gray-600 text-2xl   px-4 py-2 rounded-md hover:scale-110"
-                  >
-                    <MdOutlineShoppingCartCheckout />
-                  </button>
+
+
+                 <div className="mt-2 flex justify-between">
+            {cart.some((item) => item.product.id === product.id) ? (
+              <Link to="/cart" className="text-gray-600 text-2xl px-4 py-2 rounded-md hover:scale-110">
+                Go to Cart
+              </Link>
+            ) : (
+              <button
+                onClick={() => handleAddToCart(product)}
+                className="text-gray-600 text-2xl px-4 py-2 rounded-md hover:scale-110"
+              >
+                <MdOutlineShoppingCartCheckout />
+              </button>
+            )}
+            {/* Heart icon button for favorite */}
+          </div>
+
+  
+
                 </div>
               </div>
             ))}

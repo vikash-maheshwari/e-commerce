@@ -45,7 +45,7 @@ const cartSlice = createSlice({
       if (index >= 0) {
         // If the product is found in the cart, remove it
         state.totalItems--
-        state.total -= Number(state.cart[index].product.amount)
+        state.total -= Number(state.cart[index].product.amount * state.cart[index].quantity)
         state.cart.splice(index, 1)
         // Update to localstorage
         localStorage.setItem("cart", JSON.stringify(state.cart))
